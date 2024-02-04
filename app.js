@@ -26,4 +26,7 @@ app.post("/", async (req, res) => {
 
 });
 
+const usersController = require("./controllers/usersController.js")
+app.use("/users", usersController)
+
 module.exports = app
