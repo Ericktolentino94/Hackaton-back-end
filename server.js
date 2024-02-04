@@ -16,7 +16,7 @@ app.post("/", async (req, res) => {
     console.log("post request received at " + timestamp , " looking for " + req.body.query )
     try {
         const { location, distance, query } = req.body;
-        const queryString = `${BASE_API_URL}?location=${encodeURIComponent(location)}&radius=${distance}&keyword=${encodeURIComponent(query)}&key=${API_KEY}`;
+        const queryString = `${BASE_API_URL}?location=${encodeURIComponent(location)}&radius=${distance}&keyword=${encodeURIComponent(query)}&key=${API_KEY}&loading=async&callback=initMap`;
         const mapsData = await axios.get(queryString);
         res.status(200).json(mapsData.data)
     } catch(err) {
@@ -26,6 +26,6 @@ app.post("/", async (req, res) => {
 
 });
 
-app.listen(PORT || 8181, () => {
+app.listen(PORT || 3003, () => {
   console.log(`app is live on port: ${PORT}`);
 });
