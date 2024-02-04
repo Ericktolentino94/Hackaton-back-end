@@ -1,25 +1,15 @@
 const express = require("express")
 const users = express.Router()
 const {
-    getAllArtistes,
-    getOneArtiste,
-    deleteArtiste,
-    createArtiste,
-    updateArtiste
-} = require("../queries/artistes")
+    getAllUsers,
+    getOneUser,
+    deleteUser,
+    createUser,
+    updateUser
+} = require("../queries/users")
 const {
-    checkArtistes,
-    checkArtisteIndex,
-    checkArtisteName,
-    checkIsFavoriteBoolean,
-    checkIsNumberBirth,
-    checkIsNumberDeath,
-    checkWikiLink,
-    checkYouTubeLink,
-    checkArtisteNameLength,
-    checkGenreLength,
-    checkNationalityLength
-} = require("../validations/checkArtistes")
+
+} = require("../validations/checkUsers")
 
 const placesController = require("./placesController.js")
 users.use("/:user_id/placess", placesController)
@@ -62,7 +52,7 @@ users.delete("/:user_id", async (req, res) => {
 users.post("/", async (req, res) => {
         try {
             const user = req.body;
-            const userAdded = await createArtiste(user)
+            const userAdded = await createUser(user)
             res.status(200).json(userAdded)
         }
         catch (error) {
