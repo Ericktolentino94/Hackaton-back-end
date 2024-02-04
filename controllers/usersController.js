@@ -12,7 +12,7 @@ const {
 } = require("../validations/checkUsers")
 
 const placesController = require("./placesController.js")
-users.use("/:user_id/placess", placesController)
+users.use("/:user_id/places", placesController)
 
 users.get("/", async (req, res) => {
     try {
